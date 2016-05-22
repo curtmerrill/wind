@@ -25,7 +25,7 @@ with open('wind_data.csv', 'w') as csv_file:
     writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
     writer.writeheader()
 
-    for days_ago in range(0-DAYS_HISTORY,0):
+    for days_ago in range(1, DAYS_HISTORY+1):
         day = datetime.utcnow() - timedelta(days=days_ago)
         response = requests.get(API_URL.format(
             api_key=API_KEY,
