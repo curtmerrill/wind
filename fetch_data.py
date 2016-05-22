@@ -6,11 +6,10 @@ import requests
 from datetime import datetime, timedelta
 
 API_KEY = open(os.path.expanduser('~/.api-keys/forecast.io'), 'r').read().strip()
-API_URL = "https://api.forecast.io/forecast/{api_key}/{lat},{lon},{timestamp}"
-
-MANTEO_COORDS = [35.908199, -75.668230]
-
+COORDS = [35.908199, -75.668230]
 DAYS_HISTORY = 365
+
+API_URL = "https://api.forecast.io/forecast/{api_key}/{lat},{lon},{timestamp}"
 
 with open('wind_data.csv', 'w') as csv_file:
     fieldnames = [
@@ -30,8 +29,8 @@ with open('wind_data.csv', 'w') as csv_file:
         day = datetime.utcnow() - timedelta(days=days_ago)
         response = requests.get(API_URL.format(
             api_key=API_KEY,
-            lat=MANTEO_COORDS[0],
-            lon=MANTEO_COORDS[1],
+            lat=COORDS[0],
+            lon=COORDS[1],
             timestamp=day.replace(second=0, microsecond=0).isoformat()+'Z'
         ))
         if response.status_code != 200:
