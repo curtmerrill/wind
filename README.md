@@ -30,7 +30,7 @@ mostly north. So instead of continuing in the same direction you're facing
 
 Install the Python requirements.
 
-    $ pip install -r requirements
+    $ pip install -r requirements.txt
 
 Get a [Forecast.io API key](https://developer.forecast.io).
 
