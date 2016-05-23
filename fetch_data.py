@@ -38,14 +38,22 @@ with open('wind_data.csv', 'w') as csv_file:
         else:
             for hour in response.json()['hourly']['data']:
                 dt = datetime.fromtimestamp(hour['time'])
-                writer.writerow({
-                    'posix_time': hour['time'],
-                    'year': dt.year,
-                    'month': dt.month,
-                    'day': dt.day,
-                    'hour': dt.hour,
-                    'wind_direction': hour['windBearing'],
-                    'wind_speed': hour['windSpeed']
-                })
-                    
+
+                try:
+                    if int(hour['windSpeed']) == 0:
+                        wind_direction = ''
+                    else:
+                        wind_direction = hour['windBearing']
+
+                    writer.writerow({
+                        'posix_time': hour['time'],
+                        'year': dt.year,
+                        'month': dt.month,
+                        'day': dt.day,
+                        'hour': dt.hour,
+                        'wind_direction': wind_direction,
+                        'wind_speed': hour['windSpeed']
+                    })
+                except KeyError:
+                    pass
 
