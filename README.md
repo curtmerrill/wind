@@ -3,8 +3,8 @@
 Where would you end up if you traveled based on the direction and strength of 
 wind in your hometown?
 
-Using the Forecast.io API, I downloaded 365 days of hourly wind data
-(wind direction and speed, in miles per hour).
+Using the [Dark Sky API](https://darksky.net/dev), I downloaded 365 
+days of hourly wind data (wind direction and speed, in miles per hour).
 
 For each reading, I moved in the direction of the wind for a distance
 equal to the wind speed. 
@@ -28,11 +28,11 @@ mostly north. So instead of continuing in the same direction you're facing
 
 ## Usage
 
-Install the Python requirements.
+Install the Python requirements (Python 2.7)
 
     $ pip install -r requirements.txt
 
-Get a [Forecast.io API key](https://developer.forecast.io).
+Get a [Dark Sky API Key](https://darksky.net/dev).
 
 Edit the `API_KEY`, `COORDS`, and `DAYS_HISTORY` variables at the top of the script.
 

@@ -9,7 +9,7 @@ API_KEY = open(os.path.expanduser('~/.api-keys/forecast.io'), 'r').read().strip(
 COORDS = [35.908199, -75.668230]
 DAYS_HISTORY = 365
 
-API_URL = "https://api.forecast.io/forecast/{api_key}/{lat},{lon},{timestamp}"
+API_URL = "https://api.darksky.net/forecast/{api_key}/{lat},{lon},{timestamp}"
 
 with open('wind_data.csv', 'w') as csv_file:
     fieldnames = [
@@ -52,7 +52,7 @@ with open('wind_data.csv', 'w') as csv_file:
                         'day': dt.day,
                         'hour': dt.hour,
                         'wind_direction': wind_direction,
-                        'wind_speed': hour['windSpeed']
+                        'wind_speed': hour['windSpeed'],
                     })
                 except KeyError:
                     pass
